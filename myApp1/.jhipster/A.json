@@ -1,0 +1,21 @@
+{
+  "annotations": {
+    "changelogDate": "20240729124641"
+  },
+  "applications": ["myApp", "myApp1"],
+  "clientRootFolder": "myApp1",
+  "databaseType": "sql",
+  "fields": [],
+  "microserviceName": "myApp1",
+  "name": "A",
+  "relationships": [
+    {
+      "otherEntityName": "b",
+      "otherEntityRelationshipName": "a",
+      "relationshipName": "b",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

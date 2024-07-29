@@ -1,0 +1,22 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 1,
+    "applicationType": "microservice",
+    "authenticationType": "jwt",
+    "baseName": "myApp1",
+    "entities": ["A", "B"],
+    "jhipsterVersion": "8.6.0",
+    "jwtSecretKey": "NDJmYzlhMWI3Nzk5NDQxNWVmNjQxNmRmN2Y0MTUyOTk4ZDAyMTE4YTAzNDk4NTM1MTFjOWEyYTE4OTM5MmM3MTk1NWUyNTQ4YmUwODJhM2ZhZTc3MjA4YWQzZjVlMjE2NDA4OTA2OTY3ZGNlZDE3ZmJlNTViY2VhNmZjYTEwOGE=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1722257261000,
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "packageFolder": "com/myapp",
+    "packageName": "com.myapp",
+    "prodDatabaseType": "mysql",
+    "serverPort": 8081,
+    "skipClient": true,
+    "skipCommitHook": true,
+    "skipUserManagement": true
+  }
+}

@@ -1,0 +1,84 @@
+application {
+  config {
+    baseName ConnectorStore
+    applicationType microservice
+    packageName com.connectorstore
+    serverPort 8595
+    authenticationType jwt
+    prodDatabaseType mongodb
+    buildTool maven
+  }
+  entities ConnectorMetaData , 
+  ConnectorOrganization,
+  ConnectorInstallation,
+  ConnectorPurchase,
+  ConnectorReviewComment,
+  ConnectorVersionHistory,
+  ConnectorDeveloperReviewerComment,
+  CloudStreamsConnectorData,
+  NodeJSConnectorData,
+  ConnectorUpload,
+  ConnectorUser,
+  ConnectorPrice
+}
+
+entity ConnectorMetaData {
+connectorId String
+connectorName String
+about String
+version String 
+saasApiVersionList String
+description Blob
+connectorBuilderType String
+organizationId String
+documentLink String
+category String
+supportStatement String
+supportEmail String
+publishedBy String
+dateCreated Date
+dateUpdated Date
+iconName String
+icon Blob
+connectorType String
+shortVideo Blob
+downloadsCount Integer
+usageCount Integer
+rating Float
+termAndCondition String
+license Blob
+}
+
+entity ConnectorOrganization {}
+entity ConnectorInstallation {}
+entity ConnectorPurchase {}
+entity ConnectorReviewComment {}
+entity ConnectorVersionHistory {}
+entity ConnectorDeveloperReviewerComment {}
+entity CloudStreamsConnectorData {}
+entity NodeJSConnectorData {}
+entity ConnectorUpload {}
+entity ConnectorUser {}
+entity ConnectorPrice {}
+
+relationship OneToOne {
+  ConnectorMetaData to ConnectorOrganization
+  ConnectionInstallation to ConnectionOrganization
+  ConnectorPurchase to ConnectorOrganization
+  ConnectorUpload to ConnectorOrganization
+}
+relationship OneToMany {
+ConnectorMetaData to ConnectorVersionHistory
+ConnectorMetaData to ConnectorReviewComment
+ConnectorMetaData to ConnectorPrice
+ConnectorUpload to ConnectorPrice
+ConnectorUpload to ConnectorDeveloperReviewerComment
+}
+relationship ManyToOne {
+ConnectorInstallation to ConnectorMetaData
+ConnectorPurchase to ConnectorMetaData
+}
+
+dto * with mapstruct
+service * with serviceImpl
+

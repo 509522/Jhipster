@@ -1,0 +1,204 @@
+application {
+  config {
+    baseName ConnectorStore
+    applicationType microservice
+    packageName com.connectorstore
+    serverPort 8595
+    authenticationType jwt
+    prodDatabaseType mysql
+    devDatabaseType mysql
+    buildTool maven
+  }
+}
+
+entity ConnectorMetaData {
+connectorId String required
+connectorName String required
+about String 
+version String
+saasApiVersionList String 
+description Blob
+connectorBuilderType String
+organizationId String 
+documentLink String
+category String
+supportStatement String
+supportEmail String
+publishedBy String
+dateCreated Date
+dateUpdated Date
+iconName String
+icon Blob
+connectorType String
+shortVideo Blob
+downloadsCount Integer
+usageCount Integer
+rating Float
+termAndCondition String
+license Blob
+}
+
+entity ConnectorOrganization {
+organizationId String
+name String
+email String 
+websiteLink String
+dateCreated Date
+dateUpdated Date
+}
+
+entity ConnectorInstallation {
+installId String
+connectorId String
+version String
+status String
+message String
+organizationId String
+dateCreated Date
+dateUpdated Date
+createdId String
+modifedId String 
+favorite Boolean
+}
+
+entity ConnectorPurchase {
+purchaseId String
+connectorId String
+requestedBy String
+organizationId String
+createdId String
+modifedId String
+dateCreated Date
+dateUpdated Date
+price String
+status String
+message String
+consumerEmail String
+}
+
+entity ConnectorReviewComment {
+reviewCommentId String
+name String
+title String
+comment String
+rating Integer
+connectorId String
+dateCreated Date
+dateUpdated Date
+createdId String
+modifiedId String
+}
+
+entity ConnectorVersionHistory {
+versionId String
+connectorId String
+version String
+dateCreated Date
+dateUpdated Date
+}
+
+entity ConnectorDeveloperReviewerComment {
+id String,
+date Date
+comment String
+dateCreated Date
+dateUpdated Date
+connectorUploadId String
+}
+
+entity CloudStreamsConnectorData {
+connectorId String
+providerName String
+extensionName String
+type String
+allowCustomOperations Boolean
+certified Boolean
+providerData Blob
+extensionData Blob
+dateCreated Date
+dateUpdated Date
+deprecated Boolean
+deprecatedMessage String
+hasMultipleVersions Boolean
+upgradeable Boolean
+latest Boolean
+upgradeableTo String
+upgradeMessage String
+extVersion String
+pkgVersion String
+inlineConnection Boolean
+listenerEnabled Boolean
+}
+
+entity NodeJSConnectorData {
+connectorId String
+nodeJSData Blob
+nodeJSVersion String
+createdId String
+modifedId String
+dateCreated Date
+dateModified Date
+}
+
+entity ConnectorUpload {
+connectorUploadId String
+connectorName String
+buildVersion String
+version String
+description String
+documentLink String
+category String
+supportStatement String
+supportEmail String
+sourceCodeLink String
+userName String
+password String
+targetCodeLink String
+testCoverageReport Blob
+size Float
+createdBy String
+createdDate Date
+modifiedBy String
+modifiedDate Date
+publishedBy String
+publishDate Date
+status String
+icon Blob
+connectorType String
+shortVideo Blob
+
+}
+
+entity ConnectorUser {
+userId String
+userName String
+role String
+}
+
+entity ConnectorPrice {
+priceId Integer
+connectorId String 
+price Float
+currencyType String
+}
+
+relationship OneToOne {
+  ConnectorMetaData to ConnectorOrganization
+  ConnectorPurchase to ConnectorOrganization
+  ConnectorUpload to ConnectorOrganization
+  ConnectorUser to ConnectorOrganization
+}
+relationship OneToMany {
+ConnectorMetaData to ConnectorVersionHistory
+ConnectorMetaData to ConnectorReviewComment
+ConnectorMetaData to ConnectorPrice
+ConnectorUpload to  ConnectorPrice
+ConnectorUpload to ConnectorDeveloperReviewerComment
+}
+relationship ManyToOne {
+ConnectorInstallation to ConnectorMetaData
+ConnectorPurchase to ConnectorMetaData
+}
+
+dto * with mapstruct
+service * with serviceImpl
